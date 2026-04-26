@@ -187,44 +187,49 @@ function renderQuestion(idx) {
   $('flag-btn').textContent = flagged[idx] ? '🚩 Flagged' : '🚩 Flag';
   $('flag-btn').classList.toggle('flagged', flagged[idx]);
 
-  // Stimulus area — only show if this question has a stimulus (first in set)
+  // Stimulus area — show on every question in the set by looking up the set's stimulus
   const sa = $('stimulus-area');
   sa.innerHTML = '';
-  if (q.stimulus) {
+
+  // Find the stimulus: use this question's or walk back to the first in the set that has one
+  const setStimulus = q.stimulus ||
+    (q.setId ? (sessionQs.find(sq => sq.setId === q.setId && sq.stimulus) || {}).stimulus : null);
+
+  if (setStimulus) {
     const box = el('div', 'stimulus-box');
     const lbl = el('span', 'stimulus-label', 'Primary Source · ' + (q.source || 'Practice Test'));
     box.appendChild(lbl);
 
     // Visual image
-    if (q.stimulus.visual && q.stimulus.imageKey) {
-      const imgHtml = getImageHtml(q.stimulus.imageKey, q.stimulus.imageType, q.stimulus.searchQuery);
+    if (setStimulus.visual && setStimulus.imageKey) {
+      const imgHtml = getImageHtml(setStimulus.imageKey, setStimulus.imageType, setStimulus.searchQuery);
       if (imgHtml) box.insertAdjacentHTML('beforeend', imgHtml);
     }
 
     // Stimulus label line
-    const labelEl = el('div', '', `<em>${q.stimulus.label}</em>`);
+    const labelEl = el('div', '', `<em>${setStimulus.label}</em>`);
     labelEl.style.cssText = 'font-size:12px;color:var(--ink-light);margin-bottom:8px;font-family:"Libre Baskerville",serif';
     box.appendChild(labelEl);
 
     // Text
-    if (q.stimulus.text) {
-      const txt = el('div', 'stimulus-text', q.stimulus.text);
+    if (setStimulus.text) {
+      const txt = el('div', 'stimulus-text', setStimulus.text);
       box.appendChild(txt);
     }
 
     // Attribution
-    if (q.stimulus.attr) {
-      const attr = el('span', 'stimulus-attr', '— ' + q.stimulus.attr);
+    if (setStimulus.attr) {
+      const attr = el('span', 'stimulus-attr', '— ' + setStimulus.attr);
       box.appendChild(attr);
     }
 
     sa.appendChild(box);
 
-    // Set badge: show which question within the set
+    // Set badge showing position within set
     const setQs    = sessionQs.filter(sq => sq.setId === q.setId);
     const posInSet = setQs.indexOf(q) + 1;
     if (setQs.length > 1) {
-      const badge = el('div', 'set-badge', `Set Question ${posInSet} of ${setQs.length}`);
+      const badge = el('div', 'set-badge', `Question ${posInSet} of ${setQs.length} in this set`);
       sa.appendChild(badge);
     }
   }
