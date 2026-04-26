@@ -31,6 +31,85 @@ let currentPrompt = null;
 // History (localStorage)
 let history     = JSON.parse(localStorage.getItem('apush_history') || '[]');
 
+// ── Session Save / Restore ────────────────────────────────────────
+const SESSION_KEY = 'apush_session';
+
+function saveSession() {
+  if (!sessionQs.length) return;
+  const data = {
+    sessionIdxs: sessionQs.map(q => allQuestions.indexOf(q)),
+    answered, selected, flagged,
+    currentIdx, correct, incorrect, mode, mcqCount,
+    savedAt: Date.now()
+  };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+}
+
+function clearSession() {
+  localStorage.removeItem(SESSION_KEY);
+}
+
+function hasSavedSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    return data && data.sessionIdxs && data.sessionIdxs.length > 0
+      && (Date.now() - data.savedAt) < 86400000;
+  } catch(e) { return false; }
+}
+
+function offerRestore() {
+  if (!hasSavedSession()) return;
+  try {
+    const data = JSON.parse(localStorage.getItem(SESSION_KEY));
+    const answered = data.answered || [];
+    const done = answered.filter(a => a !== null).length;
+    const total = data.sessionIdxs.length;
+    const mins = Math.round((Date.now() - data.savedAt) / 60000);
+    const timeStr = mins < 60 ? mins + ' min ago' : Math.round(mins/60) + 'h ago';
+    const strip = document.createElement('div');
+    strip.id = 'resume-strip';
+    strip.style.cssText = 'background:var(--ink);color:var(--gold-light);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"Libre Baskerville",serif;font-size:13px;';
+    strip.innerHTML = `
+      <span>📌 Saved session: <strong>${done}/${total}</strong> questions answered (${timeStr})</span>
+      <div style="display:flex;gap:8px">
+        <button onclick="resumeSession()" style="background:var(--gold);color:var(--ink);border:none;padding:7px 18px;cursor:pointer;font-family:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-radius:1px">Resume</button>
+        <button onclick="discardSession()" style="background:none;color:var(--gold-light);border:1px solid var(--gold);padding:7px 14px;cursor:pointer;font-family:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-radius:1px">Discard</button>
+      </div>`;
+    const page = document.querySelector('.page');
+    const topBar = document.getElementById('top-bar');
+    page.insertBefore(strip, topBar.nextSibling);
+  } catch(e) { clearSession(); }
+}
+
+function resumeSession() {
+  try {
+    const data = JSON.parse(localStorage.getItem(SESSION_KEY));
+    sessionQs  = data.sessionIdxs.map(i => allQuestions[i]).filter(Boolean);
+    answered   = data.answered;
+    selected   = data.selected;
+    flagged    = data.flagged;
+    currentIdx = data.currentIdx || 0;
+    correct    = data.correct || 0;
+    incorrect  = data.incorrect || 0;
+    mode       = data.mode || 'mcq';
+    mcqCount   = data.mcqCount || 40;
+    document.getElementById('resume-strip')?.remove();
+    updateTopBar();
+    showScreen('mcq-screen');
+    renderQuestion(currentIdx);
+  } catch(e) {
+    clearSession();
+    alert('Could not restore session. Starting fresh.');
+  }
+}
+
+function discardSession() {
+  clearSession();
+  document.getElementById('resume-strip')?.remove();
+}
+
 // ── Helpers ──────────────────────────────────────────────────────
 const $  = id => document.getElementById(id);
 const el = (tag, cls, html) => {
@@ -100,6 +179,7 @@ function initStartStats() {
   $('stat-avg').textContent       = avg + '%';
 }
 initStartStats();
+offerRestore();
 
 // ── Launch ────────────────────────────────────────────────────────
 function launch() {
@@ -173,6 +253,7 @@ function startMCQ(questions) {
 function renderQuestion(idx) {
   const q = sessionQs[idx];
   currentIdx = idx;
+  if (answered.some(a => a !== null)) saveSession();
 
   // Progress bar
   const done = answered.filter(a => a !== null).length;
@@ -337,6 +418,7 @@ function handleAnswer(idx, choiceIdx) {
   }
 
   updateTopBar();
+  saveSession();
   renderQuestion(idx);
 }
 
@@ -409,6 +491,7 @@ function closeSubmitModal() {
 
 function confirmSubmit() {
   closeSubmitModal();
+  clearSession();
   stopTimer();
   // Count unanswered as wrong
   answered.forEach((a, i) => {
@@ -594,7 +677,24 @@ function startEssay(type) {
   }
   currentPrompt = prompts[Math.floor(Math.random() * prompts.length)];
   renderEssayScreen(currentPrompt, type);
-  $('essay-ta').value = '';
+
+  // Restore saved draft if one exists for this prompt
+  const essayKey = 'apush_essay_' + (currentPrompt.title || 'draft').replace(/\s+/g,'_').slice(0,40);
+  const savedDraft = localStorage.getItem(essayKey);
+  if (savedDraft) {
+    try {
+      const draft = JSON.parse(savedDraft);
+      const mins = Math.round((Date.now() - draft.savedAt) / 60000);
+      const timeStr = mins < 60 ? mins + ' min ago' : Math.round(mins/60) + 'h ago';
+      if (draft.text && confirm(`A saved draft for this prompt was found (${timeStr}).\n\nRestore it?`)) {
+        $('essay-ta').value = draft.text;
+      } else {
+        $('essay-ta').value = '';
+      }
+    } catch(e) { $('essay-ta').value = ''; }
+  } else {
+    $('essay-ta').value = '';
+  }
   updateWordCount();
   showScreen('essay-screen');
 }
@@ -699,9 +799,26 @@ function renderEssayScreen(p, type) {
 function updateWordCount() {
   const words = $('essay-ta').value.trim().split(/\s+/).filter(w => w).length;
   $('word-count').textContent = `${words} word${words !== 1 ? 's' : ''}`;
+  // Auto-save essay text
+  if (currentPrompt) {
+    const essayKey = 'apush_essay_' + (currentPrompt.title || 'draft').replace(/\s+/g,'_').slice(0,40);
+    localStorage.setItem(essayKey, JSON.stringify({
+      text: $('essay-ta').value,
+      promptTitle: currentPrompt.title,
+      essayType: fullEssayType,
+      savedAt: Date.now()
+    }));
+    localStorage.setItem('apush_essay_last_key', essayKey);
+  }
 }
 
 function submitEssay() {
+  // Clear saved draft on submit
+  if (currentPrompt) {
+    const essayKey = 'apush_essay_' + (currentPrompt.title || 'draft').replace(/\s+/g,'_').slice(0,40);
+    localStorage.removeItem(essayKey);
+    localStorage.removeItem('apush_essay_last_key');
+  }
   renderRubricScreen();
   showScreen('rubric-screen');
 }
