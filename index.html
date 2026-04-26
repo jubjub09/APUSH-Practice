@@ -22,7 +22,7 @@
   <div class="banner-eye">Advanced Placement · United States History</div>
   <h1>APUSH Practice<br>Examination Center</h1>
   <div class="banner-rule"></div>
-  <div class="banner-sub">220-Question Bank · Official-Style Prompts · Full Rubrics · 2026 Exam Prep</div>
+  <div class="banner-sub">110-Question Bank · Official-Style Prompts · Full Rubrics · 2026 Exam Prep</div>
 </div>
 
 <!-- TOP BAR -->
@@ -36,9 +36,8 @@
 <!-- ═══ START SCREEN ═══ -->
 <div id="start-screen" class="screen active content-pad">
   <div class="start-intro">
-    <p>Select an exam format, configure your options, and begin. Each MCQ session draws a fresh random selection from the 220-question bank. Essay prompts are drawn from official AP practice materials.</p>
+    <p>Select an exam format, configure your options, and begin. Each MCQ session draws a fresh random selection from the 110-question bank, organized by stimulus set. Essay prompts are drawn from official AP practice materials.</p>
   </div>
-  <!-- Session stats strip -->
   <div class="stats-strip" id="stats-strip" style="display:none">
     <div class="stats-seg"><span class="stats-num" id="stat-sessions">0</span><span class="stats-lbl">Sessions</span></div>
     <div class="stats-seg"><span class="stats-num" id="stat-questions">0</span><span class="stats-lbl">Questions Answered</span></div>
@@ -50,7 +49,7 @@
     <div class="mode-card" id="card-mcq" onclick="pickMode('mcq')">
       <span class="mode-icon">📝</span><div class="mode-title">MCQ Practice</div>
       <div class="mode-badge">Multiple Choice</div>
-      <div class="mode-desc">Random questions from the 220-question bank.</div>
+      <div class="mode-desc">Stimulus-based question sets from the 110-question bank.</div>
     </div>
     <div class="mode-card" id="card-saq" onclick="pickMode('saq')">
       <span class="mode-icon">✍️</span><div class="mode-title">SAQ Practice</div>
@@ -81,7 +80,7 @@
         <button class="opt-pill" onclick="pickCount(20,this)">20</button>
         <button class="opt-pill sel" onclick="pickCount(40,this)">40</button>
         <button class="opt-pill" onclick="pickCount(55,this)">55</button>
-        <button class="opt-pill" onclick="pickCount(220,this)">All 220</button>
+        <button class="opt-pill" onclick="pickCount(110,this)">All 110</button>
       </div>
     </div>
   </div>
@@ -93,7 +92,6 @@
       <button class="opt-pill" onclick="pickTime(40,this)">40 min</button>
       <button class="opt-pill" onclick="pickTime(55,this)">55 min</button>
       <button class="opt-pill" onclick="pickTime(65,this)">65 min</button>
-      <button class="opt-pill" onclick="pickTime(195,this)">3 hr 15 min</button>
     </div>
   </div>
   <div class="divider"></div>
@@ -110,7 +108,6 @@
     <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
     <div class="prog-label" id="prog-label">1 of 40</div>
   </div>
-  <!-- Grid toggle + flag row -->
   <div class="q-grid-row">
     <button class="q-grid-toggle" onclick="toggleGrid()">☰ Question Grid</button>
     <button class="skip-btn" onclick="skipToUnanswered()" id="skip-btn">⟶ Next Unanswered</button>
@@ -143,16 +140,11 @@
 
 <!-- ═══ ESSAY SCREEN ═══ -->
 <div id="essay-screen" class="screen content-pad">
-  <div class="no-print" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0">
-    <button class="btn-home" onclick="goHome()">← Return to Start</button>
-    <button class="banner-btn no-print" style="margin-bottom:8px" onclick="printPrompt()">🖨 Print Prompt</button>
+  <div class="no-print" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+    <button class="btn-home" onclick="goHome()" style="margin-bottom:0">← Return to Start</button>
+    <button class="banner-btn" onclick="window.print()" style="color:var(--gold);border-color:var(--gold)">🖨 Print</button>
   </div>
   <div id="essay-prompt-area"></div>
-  <div class="essay-guidance no-print" id="essay-guidance" style="display:none">
-    <div class="eg-item"><span class="eg-type">SAQ</span><span class="eg-range">~150–250</span><span class="eg-note">words per part</span></div>
-    <div class="eg-item"><span class="eg-type">LEQ</span><span class="eg-range">~500–800</span><span class="eg-note">words total</span></div>
-    <div class="eg-item"><span class="eg-type">DBQ</span><span class="eg-range">~700–1,000</span><span class="eg-note">words total</span></div>
-  </div>
   <div class="write-area no-print">
     <label class="write-label">Your Response <span id="essay-type-hint" style="font-weight:400;text-transform:none;letter-spacing:0;font-family:'Crimson Pro',serif;font-size:12px;color:var(--ink-light);opacity:.75"></span></label>
     <textarea id="essay-ta" placeholder="Write your response here…" oninput="updateWordCount()"></textarea>
@@ -219,26 +211,20 @@
       <button class="btn btn-ghost" onclick="openReview('all')">Review Questions</button>
     </div>
   </div>
-
-  <!-- AP Score Conversion Table -->
   <div class="period-breakdown" id="ap-conversion-wrap">
     <div class="breakdown-title">AP Score Estimator</div>
     <p style="font-size:13px;color:var(--ink-light);font-style:italic;margin-bottom:16px;line-height:1.6">
-      The MCQ section is 40% of the AP exam score. These ranges are approximate — actual cutoffs vary by year and are combined with essay sections.
+      The MCQ section is 40% of the AP exam score. These ranges are approximate.
     </p>
     <div id="ap-conversion-table"></div>
   </div>
-
-  <!-- Period breakdown -->
   <div class="period-breakdown">
     <div class="breakdown-title">Performance by Period</div>
     <div id="period-breakdown-list"></div>
   </div>
 </div>
 
-</div><!-- /page -->
-
-<!-- ═══ DOCUMENT LIBRARY SCREEN ═══ -->
+<!-- ═══ DOCUMENT LIBRARY ═══ -->
 <div id="docs-screen" class="screen content-pad">
   <button class="btn-home" onclick="goHome()">← Return to Start</button>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
@@ -250,7 +236,6 @@
       style="padding:9px 14px;font-family:'Crimson Pro',serif;font-size:14px;border:1.5px solid var(--parchment-dark);border-radius:2px;background:var(--cream);color:var(--ink);width:220px;transition:border-color .2s"
       onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--parchment-dark)'">
   </div>
-  <!-- Period filter pills -->
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="period-pills">
     <button class="rf-pill active" onclick="setDocPeriod('all',this)">All Periods</button>
     <button class="rf-pill" onclick="setDocPeriod('1',this)">Period 1–2</button>
@@ -266,7 +251,9 @@
   <div id="docs-count" style="font-size:11px;color:var(--ink-light);opacity:.6;margin-bottom:14px;font-family:'Libre Baskerville',serif;letter-spacing:.08em"></div>
   <div id="docs-list"></div>
 </div>
-<div id="submit-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px">
+
+<!-- SUBMIT MODAL -->
+<div id="submit-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:20px">
   <div style="background:var(--parchment);max-width:460px;width:100%;border-radius:2px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.5);border:1.5px solid var(--gold)">
     <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px">⚠️ Submit Examination?</div>
     <div id="submit-modal-body" style="font-size:14px;line-height:1.7;color:var(--ink-light);margin-bottom:24px"></div>
@@ -277,22 +264,20 @@
   </div>
 </div>
 
-<!-- FULL EXAM PHASE MODAL -->
+<!-- PHASE MODAL (Full Exam) -->
 <div id="phase-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;padding:20px">
   <div style="background:var(--parchment);max-width:500px;width:100%;border-radius:2px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,0.5);border:2px solid var(--gold);text-align:center">
     <div style="font-size:36px;margin-bottom:12px" id="phase-modal-icon">✍️</div>
     <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--ink);margin-bottom:8px" id="phase-modal-title">Section Complete</div>
     <div style="font-size:14px;color:var(--ink-light);line-height:1.7;margin-bottom:24px" id="phase-modal-body"></div>
-    <div style="background:var(--ink);border-radius:1px;padding:14px 20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center">
-      <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Libre Baskerville',serif" id="phase-modal-timer-label">Time Remaining</span>
-      <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold-bright)" id="phase-modal-timer">—</span>
-    </div>
     <button class="btn btn-ink" style="width:100%;padding:15px" onclick="advanceFullPhase()" id="phase-modal-btn">Begin Next Section →</button>
   </div>
 </div>
 
-
+<!-- Scripts — order matters: images → questions → app -->
 <script src="js/images.js"></script>
+<script src="js/questions_marco.js"></script>
+<script src="js/questions_pr6.js"></script>
 <script src="js/questions.js"></script>
 <script src="js/prompts.js"></script>
 <script src="js/documents.js"></script>
