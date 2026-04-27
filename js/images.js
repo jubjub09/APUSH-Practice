@@ -1,7 +1,7 @@
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 // IMAGE REGISTRY — maps imageKey to local file path
 // All images extracted directly from uploaded PDFs
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 
 const IMAGE_REGISTRY = {
   // Marco Learning Practice Test 1 — MCQ stimuli
@@ -22,12 +22,23 @@ const IMAGE_REGISTRY = {
   "pr6_q4_carpetbagger":       "images/pr6_q4_carpetbagger.jpg",
   "pr6_q18_westward":          "images/pr6_q18_westward.jpg",
   "pr6_q24_freesoiler":        "images/pr6_q24_freesoiler.jpg",
+
+  // Princeton Review Practice Test 5 — MCQ stimuli
+  "pt5_q1_european_map":       "images/pt5_q1_european_map.jpg",
+  "pt5_q19_erie_canal":        "images/pt5_q19_erie_canal.jpg",
+  "pt5_q31_bosses_senate":     "images/pt5_q31_bosses_senate.jpg",
+  "pt5_q37_taft_investments":  "images/pt5_q37_taft_investments.jpg",
+  "pt5_q40_lodge_cartoon":     "images/pt5_q40_lodge_cartoon.jpg",
+
+  // Princeton Review Practice Test 5 — FRQ stimuli
+  "pt5_saq2_tammany":          "images/pt5_saq2_tammany.jpg",
+  "pt5_dbq_doc1_anaconda":     "images/pt5_dbq_doc1_anaconda.jpg",
 };
 
 /**
  * Returns an <img> tag for a given imageKey, or null if not found.
  */
-function getImageHtml(imageKey, imageType, searchQuery) {
+function getImageHtml(imageKey, imageType) {
   const src = IMAGE_REGISTRY[imageKey];
   if (src) {
     return `<img src="${src}" alt="${imageType || 'Historical image'}" class="stimulus-img" loading="lazy">`;

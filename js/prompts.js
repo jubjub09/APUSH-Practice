@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════════
 // APUSH FRQ PROMPT BANK
 // SAQ · LEQ · DBQ — Official + Marco Learning PT1 + Princeton Review PT6
-// Stimulus objects match MCQ format: visual, imageKey, imageType, searchQuery
+// Stimulus objects match MCQ format: visual, imageKey, imageType
 // ═══════════════════════════════════════════════════════════════════
 
 // ██████████████████████  SAQ PROMPTS  ██████████████████████████████
@@ -34,7 +34,6 @@ const saqPrompts = [
   stimulus:{
     label:"'Wilson's Suggestion for a Cartoon' — political cartoon, 1912 campaign, Columbus Dispatch",
     visual:true, imageKey:"wilson_1912_cartoon", imageType:"political cartoon",
-    searchQuery:"Wilson suggestion cartoon 1912 Roosevelt trusts hallelujah chorus Columbus Dispatch",
     text:"A 1912 political cartoon depicting Woodrow Wilson as a conductor leading a choir of large, rotund figures labeled 'TRUST' who sing 'CON-TROL US A-GAIN.' Based on Wilson's quote: 'If I were a cartoonist I would draw a picture of the biggest monopolies of the United States, drawn up in line and in front Mr. Roosevelt trying to lead them in a hallelujah chorus.' The image critiques Theodore Roosevelt's approach to trusts as regulation rather than elimination, implying big business preferred Roosevelt's approach.",
     attr:"Political cartoon, Columbus Dispatch, 1912"
   },
@@ -340,4 +339,184 @@ const dbqPrompts = [
     {title:"Analysis and Reasoning (0–1 point)",rows:[{pts:1,desc:"Complex understanding: Explains how the Constitution represents BOTH change AND continuity simultaneously — it changed the framework of government (stronger, more functional than the Articles) while showing continuity with existing inequalities (slavery, property-based suffrage, limited popular participation) that the Declaration's language rhetorically challenged but did not resolve. OR explains why the discrepancy between the Declaration's ideals and the Constitution's compromises was not hypocrisy but necessity — the Constitution had to be acceptable to slaveholders and small states to be ratified, making the compromises structurally required even if philosophically inconsistent. OR connects to the long arc of American history — that the Declaration's ideals became the standard by which Americans measured constitutional failures, producing the Civil War amendments, women's suffrage, and the civil rights movement as each generation tried to make the Constitution match the Declaration."}]}
   ]}
 }
+,
+
+// ═══════════════════════════════════════════════════════════════════
+// PRINCETON REVIEW PRACTICE TEST 5 — SAQ PROMPTS
+// ═══════════════════════════════════════════════════════════════════
+
 ]; // end dbqPrompts
+
+// Append PT5 entries to existing arrays
+saqPrompts.push(
+{
+  type:"SAQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Short-Answer Question 1 — Spanish-American War",
+  context:"Use the excerpts below and your knowledge of United States history to answer all parts of the following question.",
+  stimulus:{
+    label:"President Theodore Roosevelt, Theodore Roosevelt: An Autobiography, 1913 · Paul Atwood, historian, War and Empire, 2010",
+    text:"Roosevelt (1913): 'Our own direct interests were great, because of the Cuban tobacco and sugar, and especially because of Cuba's relation to the projected Isthmian [Panama] Canal. But even greater were our interests from the standpoint of humanity. ... It was our duty, even more from the standpoint of National honor than from the standpoint of National interest, to stop the devastation and destruction. Because of these considerations I favored war.'\n\nAtwood (2010): 'The Spanish-American War was fomented on outright lies and trumped up accusations against the intended enemy. ... War fever in the general population never reached a critical temperature until the accidental sinking of the USS Maine was deliberately, and falsely, attributed to Spanish villainy. ... In a cryptic message ... Senator Lodge wrote that \"There may be an explosion any day in Cuba which would settle a great many things. We have got a battleship in the harbor of Havana, and our fleet, which overmatches anything the Spanish have, is masked at the Dry Tortugas.\"'",
+    attr:"Theodore Roosevelt, Theodore Roosevelt: An Autobiography, 1913; Paul Atwood, War and Empire, 2010"
+  },
+  parts:[
+    "Briefly explain ONE major difference between Roosevelt's and Atwood's historical interpretations of the United States' involvement in the Spanish-American War.",
+    "Briefly explain how ONE historical event or development in the relevant time period could be used to support Roosevelt's interpretation.",
+    "Briefly explain how ONE historical event or development in the relevant time period could be used to support Atwood's interpretation."
+  ],
+  rubric:{total:3,sections:[
+    {title:"Part A — One Point",rows:[{pts:1,desc:"Effective answers highlight specific differences — Roosevelt frames the war as humanitarian intervention to stop Spanish brutality against Cubans, with national honor as the primary motive; Atwood argues the war was fomented through deliberate propaganda and false accusations (yellow journalism, Maine sinking misattributed to Spain), serving economic interests (Cuban sugar, tobacco, Panama Canal route). Roosevelt emphasizes duty and honor; Atwood emphasizes deception and imperial self-interest."}]},
+    {title:"Part B — One Point",rows:[{pts:1,desc:"Events supporting Roosevelt's humanitarian interpretation — Weyler's 'reconcentrado' policy forcing Cuban civilians into camps where thousands died; Cuban insurrection against Spanish colonial rule beginning in 1895; documented Spanish atrocities reported by foreign correspondents; Spain's refusal to grant Cuban autonomy despite McKinley's ultimatum; the Cuba Libre movement based in Florida appealing to American sympathy."}]},
+    {title:"Part C — One Point",rows:[{pts:1,desc:"Events supporting Atwood's imperial/propaganda interpretation — Joseph Pulitzer's and William Randolph Hearst's 'yellow journalism' fabricating or exaggerating Spanish atrocities to sell newspapers; investigation findings that the Maine explosion was likely internal, not Spanish sabotage; U.S. acquisition of Puerto Rico, Guam, and the Philippines after the war — suggesting territorial ambition beyond Cuba's freedom; in 1894, 90% of Cuba's exports went to the United States, showing economic interest; the Platt Amendment giving the U.S. indefinite naval base rights at Guantanamo Bay."}]}
+  ]}
+},
+{
+  type:"SAQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Short-Answer Question 2 — Tammany Hall and Urban Politics",
+  context:"Use the image below and your knowledge of United States history to answer all parts of the following question.",
+  stimulus:{
+    label:"Political cartoon by Frederick Burr Opper, 'Lots of Hunters After a Very Sick Tiger,' Puck magazine, 1893",
+    text:"A political cartoon showing a weakened 'Tammany Tiger' — a tiger wearing a top hat labeled 'Tammany Hall' — crouching injured on the ground while numerous 'hunters' ride toward it on elephants. The hunters' elephants are labeled with reform groups: 'National Democracy,' various state governments, and political reformers. The caption reads: 'LOTS OF HUNTERS AFTER A VERY SICK TIGER!' The cartoon depicts the growing reform movement challenging Tammany Hall's political machine in New York City.",
+    attr:"Frederick Burr Opper, Puck magazine, 1893",
+    visual:true,
+    imageKey:"pt5_saq2_tammany",
+    imageType:"political cartoon"
+  },
+  parts:[
+    "Briefly explain ONE characteristic of urban politics in the late 19th century as portrayed in the image.",
+    "Briefly explain ONE reaction or historical change to urban politics of the late 19th century.",
+    "Briefly explain ANOTHER reaction or historical change to urban politics of the late 19th century."
+  ],
+  rubric:{total:3,sections:[
+    {title:"Part A — One Point",rows:[{pts:1,desc:"Effective answers identify specific characteristics of machine politics — the dominance of a single powerful political organization (Tammany Hall) over city government; corruption and bribery as the basis of political power; the machine's control of immigrant votes in exchange for jobs and services; the boss system allowing a small group to control municipal government; Boss Tweed's embezzlement of millions through city construction contracts."}]},
+    {title:"Part B — One Point",rows:[{pts:1,desc:"First reform response — muckraking journalism exposing corruption (Thomas Nast's Tammany Hall cartoons led to Boss Tweed's conviction in 1871); Progressive Era urban reform campaigns; civil service reform (Pendleton Act 1883) creating merit-based hiring; settlement house movement (Hull House, 1889) undercutting machine dependency; Australian secret ballot reducing vote-buying."}]},
+    {title:"Part C — One Point",rows:[{pts:1,desc:"Second distinct reform response — direct democracy reforms: initiative, referendum, and recall; the 17th Amendment (1913) providing direct election of senators; city commission and city manager government replacing machine-controlled systems; state-level anti-corruption investigations and prosecutions; immigration restriction reducing the immigrant voter base machines depended on."}]}
+  ]}
+},
+{
+  type:"SAQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Short-Answer Question 3 — Bill of Rights",
+  context:"Answer all parts of the following question.",
+  parts:[
+    "Briefly explain how ONE historical development led to the creation of the Bill of Rights.",
+    "Briefly explain ONE specific argument supporters of the Bill of Rights used in the 1780s to promote its inclusion in the Constitution.",
+    "Briefly explain ONE specific argument opponents of the Bill of Rights used in the 1780s to prevent its inclusion in the Constitution."
+  ],
+  rubric:{total:3,sections:[
+    {title:"Part A — One Point",rows:[{pts:1,desc:"The Philadelphia Convention (1787) initially produced a Constitution without a Bill of Rights. Anti-Federalists proposed adding one but were initially rejected by Federalists. When ratification was threatened by wavering states (Virginia, New York), Federalists promised a Bill of Rights as amendments once the Constitution was ratified. This promise secured ratification, and Madison introduced the first ten Amendments in the First Congress (1789)."}]},
+    {title:"Part B — One Point",rows:[{pts:1,desc:"Anti-Federalist arguments for the Bill of Rights — a strong national government without explicit limitations threatened individual liberty; without a Bill of Rights the president could become a king-like figure; individual rights must be explicitly enshrined to be protected; Patrick Henry demanded explicit protections for speech, religion, and due process; the British experience (Magna Carta, English Bill of Rights 1689) showed written protections were necessary."}]},
+    {title:"Part C — One Point",rows:[{pts:1,desc:"Federalist arguments against the Bill of Rights — Madison initially argued states could delineate individual rights in their own constitutions; Hamilton in Federalist #84 argued a Bill of Rights was unnecessary and potentially dangerous, since listing protected rights might imply all unlisted rights were unprotected; the Constitution created a limited government of enumerated powers, so individual rights needed no separate protection; listing rights might actually limit liberty by implying unlisted rights were not protected."}]}
+  ]}
+},
+{
+  type:"SAQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Short-Answer Question 4 — The New Deal",
+  context:"Answer all parts of the following question.",
+  parts:[
+    "Briefly describe ONE long-term success of the New Deal.",
+    "Briefly describe ONE long-term failure of the New Deal.",
+    "Briefly explain ONE reason why some features of the New Deal were more successful than others."
+  ],
+  rubric:{total:3,sections:[
+    {title:"Part A — One Point",rows:[{pts:1,desc:"Any specific New Deal success with long-term impact — Social Security (1935) creating a permanent federal retirement income safety net; FDIC (1933) guaranteeing bank deposits and restoring public confidence; SEC (1934) regulating stock markets and preventing speculative abuses; federal minimum wage established by FLSA (1938); TVA electrifying rural Appalachia; collective bargaining rights protected by the Wagner Act (1935)."}]},
+    {title:"Part B — One Point",rows:[{pts:1,desc:"Any specific New Deal failure — NIRA struck down by the Supreme Court in Schechter Poultry Corp. v. United States (1935) as unconstitutional; AAA harmed Black tenant farmers by reducing the need to hire sharecroppers; unemployment remained in double digits throughout the 1930s; the 'Roosevelt recession' of 1937 when FDR prematurely cut spending; New Deal coalition included Southern Democrats who blocked civil rights legislation; national debt doubled with budget remaining unbalanced."}]},
+    {title:"Part C — One Point",rows:[{pts:1,desc:"Reasons for differential success — successful programs (Social Security, FDIC) required broad participation and provided universal benefits creating a wide constituency; successful programs were compatible with the Constitution while the NIRA and early AAA were struck down as overreach; programs creating permanent institutions with career bureaucracies (SEC) outlasted programs dependent on temporary political support; successful programs addressed structural problems with structural solutions while unsuccessful ones tried to artificially manipulate prices and wages."}]}
+  ]}
+}
+);
+
+leqPrompts.push(
+{
+  type:"LEQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Long Essay Question 2 — American Revolution and Women",
+  prompt:"Evaluate the extent to which the American Revolution marked a turning point in women's lives in the United States. In the development of your argument, explain what changed and what stayed the same for women as a result of the Revolutionary War period from 1776 to 1787.",
+  rubric:{total:6,sections:[
+    {title:"Thesis / Claim (0–1 point)",rows:[{pts:1,desc:"Defensible thesis addressing the EXTENT of change — e.g., 'While the American Revolution produced meaningful ideological shifts for women through the concept of Republican Motherhood and expanded educational access, it ultimately represented a limited turning point because women remained excluded from formal political participation, property ownership within marriage, and professional careers — changes requiring another century of activism to achieve.' A strong thesis addresses both what changed and what continuity persisted."}]},
+    {title:"Contextualization (0–1 point)",rows:[{pts:1,desc:"Relevant broader context: Enlightenment ideals of natural rights and individual liberty that undergirded the Revolution; the pre-Revolutionary legal status of women under coverture; women's roles during the war itself as camp followers, household managers, and occasional spies; the contradiction between revolutionary rhetoric of liberty and women's exclusion from its benefits; Abigail Adams's 'Remember the Ladies' letter (1776)."}]},
+    {title:"Evidence (0–2 points)",rows:[{pts:1,desc:"At least TWO specific pieces of accurate evidence."},{pts:1,desc:"Change evidence: Republican Motherhood elevated women's civic importance — raising virtuous citizens gave women's domestic role new public significance; girls' education expanded; New Jersey briefly granted propertied women voting rights (1776–1807); increased emphasis on companionate marriage; women's voluntary associations expanded public moral authority. Continuity evidence: coverture law remained fully in force; women could not vote in any state after 1807; women could not hold office, serve on juries, or make legal contracts; professional and educational careers remained closed; divorce remained difficult and disadvantaged women; women had no legal right to their own wages or children."}]},
+    {title:"Analysis and Reasoning (0–2 points)",rows:[{pts:1,desc:"Historical reasoning — continuity/change over time comparing women's status before and after the Revolution."},{pts:1,desc:"Complex understanding — e.g., Republican Motherhood was simultaneously an expansion of women's importance AND a mechanism for confining them more firmly to the domestic sphere; or the Revolution's ideological seeds (all men are created equal) provided the argumentative foundation for the 19th-century women's rights movement, making it a turning point in ideological potential if not immediate legal change."}]}
+  ]}
+},
+{
+  type:"LEQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Long Essay Question 3 — Market Revolution and African Americans",
+  prompt:"Evaluate the extent to which the Market Revolution marked a turning point in the lives of African-Americans in the United States. In the development of your argument, explain what changed and what stayed the same for African-Americans as a result of the Market Revolution within the period 1800–1850.",
+  rubric:{total:6,sections:[
+    {title:"Thesis / Claim (0–1 point)",rows:[{pts:1,desc:"Defensible thesis addressing EXTENT of change AND continuity — e.g., 'The Market Revolution marked a paradoxical turning point for African Americans: in the North, industrialization created new economic opportunities and expanded free Black communities, while in the South, Northern demand for cotton actually intensified and entrenched slavery — making the Market Revolution simultaneously liberating for some and more oppressive for most.' A strong thesis must address both change and continuity."}]},
+    {title:"Contextualization (0–1 point)",rows:[{pts:1,desc:"Broader context: the end of the Trans-Atlantic slave trade (1808) and its effect on the domestic slave trade; the cotton gin (1793) creating explosive demand for enslaved labor; the Second Great Awakening's connection to abolitionism; the Missouri Compromise (1820) as evidence of slavery's growing political stakes; the Articles of Confederation's weakness on slavery."}]},
+    {title:"Evidence (0–2 points)",rows:[{pts:1,desc:"At least TWO specific pieces of accurate evidence."},{pts:1,desc:"Change evidence: Northern industrialization created urban free Black communities with churches, newspapers (Freedom's Journal, 1827), schools, and mutual aid societies; the abolitionist movement became more mainstream (The Liberator, 1831; American Anti-Slavery Society, 1833); Underground Railroad became more organized; Nat Turner's Rebellion (1831) showed enslaved people's continued resistance. Continuity evidence: enslaved population grew from ~1 million in 1800 to ~3.2 million by 1850; cotton boom made slavery MORE entrenched; domestic slave trade intensified; slave codes became harsher after Nat Turner's Rebellion; free Black northerners faced legal discrimination and violent white opposition."}]},
+    {title:"Analysis and Reasoning (0–2 points)",rows:[{pts:1,desc:"Historical reasoning — comparison between Northern and Southern Black experiences; causation explaining how Northern demand for cotton paradoxically strengthened slavery while creating Northern free Black communities."},{pts:1,desc:"Complex understanding — e.g., the Market Revolution created the economic context making the Civil War inevitable: Northern free labor ideology directly opposed Southern slave labor capitalism; or the irony that the same Northern manufacturing economy that created opportunities for free Black workers was the primary consumer of slave-produced cotton, making Northern prosperity complicit in Southern slavery."}]}
+  ]}
+},
+{
+  type:"LEQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Long Essay Question 4 — Great Depression as Turning Point",
+  prompt:"Evaluate the extent to which the Great Depression marked a turning point in the political and economic history of the United States. In the development of your argument, explain what changed and what stayed the same from the period immediately before the Great Depression (1920s) to the period immediately after the Great Depression (1940s).",
+  rubric:{total:6,sections:[
+    {title:"Thesis / Claim (0–1 point)",rows:[{pts:1,desc:"Defensible thesis addressing EXTENT of change AND continuity — e.g., 'The Great Depression represented a fundamental turning point in American political economy: the federal government permanently assumed responsibility for citizens' economic welfare through Social Security, banking regulation, and labor protections, reversing the laissez-faire consensus of the 1920s — though the underlying capitalist structure, reliance on private enterprise, and skepticism of government intervention persisted as conservative countercurrents that would reassert themselves.' A strong thesis addresses specific political AND economic dimensions."}]},
+    {title:"Contextualization (0–1 point)",rows:[{pts:1,desc:"Broader context: the 1920s 'New Era' of Republican laissez-faire economics (Harding-Coolidge-Hoover); the speculative bubble of the 1920s stock market; the Smoot-Hawley Tariff (1930) deepening the Depression internationally; the progressive tradition preceding the New Deal (Theodore Roosevelt, Woodrow Wilson); international context of the Depression producing fascism in Europe."}]},
+    {title:"Evidence (0–2 points)",rows:[{pts:1,desc:"At least TWO specific pieces of accurate evidence."},{pts:1,desc:"Change evidence: Social Security (1935); FDIC; SEC; Wagner Act (1935) protecting collective bargaining; federal minimum wage (FLSA 1938); Democratic dominance of national politics 1932–1952; Keynesian deficit spending accepted; TVA as precedent for federal regional development. Continuity evidence: private enterprise remained the economic foundation; capitalism was preserved, not replaced; anti-government conservatism persisted; military spending in WWII, not the New Deal, ended the Depression; racial exclusions in New Deal programs continued pre-existing discrimination."}]},
+    {title:"Analysis and Reasoning (0–2 points)",rows:[{pts:1,desc:"Historical reasoning — continuity/change over time comparing 1920s and 1940s political economy."},{pts:1,desc:"Complex understanding — e.g., the New Deal was a conservative turning point — it saved capitalism from more radical alternatives (Huey Long's Share Our Wealth, socialist proposals) by reforming it; or WWII military mobilization actually completed what the New Deal started, making the war's economic management as much a turning point as the Depression itself."}]}
+  ]}
+}
+);
+
+dbqPrompts.push(
+{
+  type:"DBQ", source:"Princeton Review", year:"Princeton Review Practice Test 5",
+  title:"Document-Based Question — North's Victory in the Civil War",
+  prompt:"Evaluate the extent to which the North won the Civil War due to advantages in regard to supplies and infrastructure.",
+  note:"Use at least SIX of the seven documents. Use at least ONE piece of outside evidence. Explain sourcing for at least THREE documents.",
+  documents:[
+    {
+      label:"Document 1 — 'Scott's Great Snake,' cartoon map illustrating the Anaconda Plan, J.B. Elliott, 1861",
+      text:"'Scott's Great Snake' — a cartoon map depicting a giant snake coiling around the Confederate states. The snake represents the Union naval blockade of Southern ports and the control of the Mississippi River, designed to cut off the Confederacy from foreign trade and supplies. The plan divided the Confederacy by controlling the Mississippi River while simultaneously strangling Southern ports from the Atlantic to the Gulf of Mexico. Starting in April 1861, the Anaconda Plan depended upon a Union blockade of Southern ports and called for an advance down the Mississippi River to cut the South in two.",
+      attr:"J.B. Elliott, 'Scott's Great Snake,' cartoon map illustrating General Winfield Scott's Anaconda Plan, 1861",
+      visual:true,
+      imageKey:"pt5_dbq_doc1_anaconda",
+      imageType:"cartoon map"
+    },
+    {
+      label:"Document 2 — Map of Confederate territory losses, 1861–1865, Office of the Chief of Military History, United States Army",
+      text:"A military history map showing the progression of Union control over Confederate territory from 1861 to 1865. Areas under Union control in 1861 are shown, with additional Confederate territories lost shaded by year: coastal areas fell first (Fort Monroe 1861, Port Royal Nov 1861, New Orleans Apr 1862), followed by interior territories progressing from north to south. The Mississippi River corridor fell by mid-1863 (Vicksburg). Sherman's March accounts for the large swath of Georgia territory taken in 1864. The map shows how the Anaconda Plan's dual strategy of coastal blockade and river control progressively dismembered Confederate territory.",
+      attr:"Office of the Chief of Military History, United States Army, 'The Civil War, 1861–1865'"
+    },
+    {
+      label:"Document 3 — J.M. Edmunds, Commissioner General Land Office, 'Manufactures of the United States in 1860,' 1865",
+      text:"Without our manufacturing capacities whence could we have drawn the materials of war? Not from abroad, for there was hostility of sentiment. Who would have taken our loans? Not the capitalists of England or the Continent, for there the sympathy generally was with the other side. No, it was manufacturing and mechanical resources and the granaries of the West which enables the republic to arm, subsist, and pay immense armies, and create iron-clad fleets to meet the emergency. It was mainly for the want of these, and not for lack of courage, will, or skill, that the revolt failed.",
+      attr:"J.M. Edmunds, Commissioner General Land Office, 'Manufactures of the United States in 1860: Compiled from the Original Returns of the Eighth Census,' 1865"
+    },
+    {
+      label:"Document 4 — Comparative resources: Union and Confederate states, 1861",
+      text:"Union vs. Confederate resource comparison: Total population 2.5:1 Union; Male population 18–60 yrs 4.4:1 Union; Naval ship tonnage 25:1 Union; Factory production value 10:1 Union; Textile goods production 17:1 Union; Iron production 20:1 Union; Coal production 38:1 Union; Firearms production 32:1 Union; Railroad mileage 2.4:1 Union; Merchant ship tonnage 9:1 Union; Wealth produced 3:1 Union; Farm acreage 3:1 Union; Draft animals 1.8:1 Union; Livestock 1.5:1 Union; Wheat production 4.2:1 Union; Corn production 2:1 Union. Confederate advantage: Cotton production 1:24. By 1864, free men 18–60 in military service: Union 44%, Confederacy 90%.",
+      attr:"Comparison of available resources in the Union and the Confederate States in 1861"
+    },
+    {
+      label:"Document 5 — General William Tecumseh Sherman, comments to Professor David F. Boyd, December 24, 1860",
+      text:"You people of the South don't know what you are doing. This country will be drenched in blood, and God only knows how it will end. It is all folly, madness, a crime against civilization! You people speak so lightly of war; you don't know what you're talking about. War is a terrible thing! You mistake, too, the people of the North. They are a peaceable people but an earnest people, and they will fight, too. They are not going to let this country be destroyed without a mighty effort to save it... Besides, where are your men and appliances of war to contend against them? The North can make a steam engine, locomotive, or railway car; hardly a yard of cloth or pair of shoes can you make. You are rushing into war with one of the most powerful, ingeniously mechanical, and determined people on Earth—right at your doors. You are bound to fail. Only in your spirit and determination are you prepared for war. In all else you are totally unprepared, with a bad cause to start with. At first you will make headway, but as your limited resources begin to fail, shut out from the markets of Europe as you will be, your cause will begin to wane. If your people will but stop and think, they must see in the end that you will surely fail.",
+      attr:"General William Tecumseh Sherman, comments to Professor David F. Boyd, December 24, 1860"
+    },
+    {
+      label:"Document 6 — General William T. Sherman, Military Division of the Mississippi Special Field Order 120, November 9, 1864",
+      text:"IV. The army will forage liberally on the country during the march. To this end, each brigade commander will organize a good and sufficient foraging party, under the command of one or more discreet officers, who will gather, near the route traveled, corn or forage of any kind, meat of any kind, vegetables, corn-meal, or whatever is needed by the command, aiming at all times to keep in the wagons at least ten day's provisions for the command and three days' forage. Soldiers must not enter the dwellings of the inhabitants, or commit any trespass, but during a halt or a camp they may be permitted to gather turnips, apples, and other vegetables, and to drive in stock of their camp... V. To army corps commanders alone is entrusted the power to destroy mills, houses, cotton-gins, &c., and for them this general principle is laid down: In districts and neighborhoods where the army is unmolested no destruction of such property should be permitted; but should guerrillas or bushwhackers molest our march, or should the inhabitants burn bridges, obstruct roads, or otherwise manifest local hostility, then army commanders should order and enforce a devastation more or less relentless according to the measure of such hostility. VI. As for horses, mules, wagons, &c., belonging to the inhabitants, the cavalry and artillery may appropriate freely and without limit...",
+      attr:"General William T. Sherman, Military Division of the Mississippi Special Field Order 120, November 9, 1864"
+    },
+    {
+      label:"Document 7 — Jens Anderson, letter to a friend, Army Camp at Murfreesboro, Tennessee, March 1, 1863",
+      text:"From your letter of Feb. 20th I see that you have learned about the skirmish we had on Boxing Day. That was but a foretaste of the New Year Party… In the evening of December 29, we were 6 miles from Murfreesboro and 1 mile from the enemy outposts. Due to the immediate proximity of the enemy, we were forbidden to make fires at night, and didn't it rain that night! So there was nothing to do but throw ourselves on the ground and eat a cracker and drink cold water with it, and after that humble meal we had to think about sleep. Those who had any unrolled their blankets, but on account of the rain and the coldness of the night, we did not get any sleep... At 3 p.m. we were suddenly stopped by a large enemy force, which opened a murderous fire at us with two batteries and thousands of muskets. We were immediately ordered to retreat behind a fence where we stayed until nightfall, when we withdrew to the reserve, where we lay that night, embracing our rifles, and almost froze to death... we were attacked at the front by a line three ranks deep, and at the same time they flanked us on both sides, so we were fired at from three sides; this was quite insufferable, we had to get away, and everybody took flight... Our Lieutenant Colonel together with many another brave officer and bold soldier fell here.",
+      attr:"Jens Anderson, letter to a friend, Army Camp at Murfreesboro, Tennessee, March 1, 1863"
+    }
+  ],
+  rubric:{total:7,sections:[
+    {title:"Thesis / Claim (0–1 point)",rows:[{pts:1,desc:"Defensible thesis establishing a line of reasoning about the EXTENT of supply/infrastructure advantages — e.g., 'The North's overwhelming advantages in manufacturing, railroad infrastructure, naval capacity, and population were the decisive factors enabling the Union to sustain a multi-year war of attrition that the Confederacy, isolated from European markets and lacking industrial capacity, could not match — making material superiority the primary cause of Union victory.' OR more nuanced: 'While the North's enormous advantages in manufacturing and infrastructure were necessary preconditions for Union victory, they were not sufficient — Union victory also required effective military strategy, political leadership, and the Confederacy's inability to sustain morale, making supply superiority a critical but not singular cause.'"}]},
+    {title:"Contextualization (0–1 point)",rows:[{pts:1,desc:"Broader historical context: the antebellum economic divergence between North (industrializing) and South (agricultural, slave-based) predating the war; the Market Revolution industrializing the North while the South invested in cotton and slavery; Northern immigration waves providing larger military manpower; the political context of Bleeding Kansas, John Brown's raid, and Lincoln's election precipitating secession; the South's military strategy of defensive war hoping for European intervention and Northern war-weariness."}]},
+    {title:"Document Use (0–3 points)",rows:[
+      {pts:1,desc:"Accurately describes content of at least 3 documents to address the prompt."},
+      {pts:1,desc:"Uses at least 6 documents to support an argument about the extent of supply/infrastructure advantages."},
+      {pts:1,desc:"For at least 3 documents, explains HOW point of view, purpose, historical situation, or audience is relevant — e.g., Doc 3 (Edmunds, 1865) is a postwar government assessment, so Edmunds has an interest in validating Union policy and may overstate the manufacturing argument; Doc 5 (Sherman, 1860) was written BEFORE the war began — a prediction, not retrospective analysis, possibly overconfident; Doc 7 (soldier's letter) is a personal account revealing supply shortages on the battlefield, potentially qualifying the 'Northern abundance' thesis."}
+    ]},
+    {title:"Evidence Beyond Documents (0–1 point)",rows:[{pts:1,desc:"Specific outside evidence: 70% of U.S. railroad mileage was in free states; the Lowell manufacturing system; Pacific Railway Act, Morrill Act, and Homestead Act passed while Southern Democrats were absent from Congress; only 13% of American banks were in Confederate states; Grant's effective use of rail logistics; the Emancipation Proclamation preventing British/French intervention; Sherman's March destroying Southern supply infrastructure; the Confederacy pulled men off the railroad for the war effort leaving railways understaffed."}]},
+    {title:"Analysis and Reasoning (0–1 point)",rows:[{pts:1,desc:"Uses historical reasoning to frame the argument — causation: specific industrial advantages directly produced specific military outcomes (naval superiority enabled blockade → Anaconda Plan → territorial losses in Doc 2); OR comparison: contrasts Union industrial capacity with Confederate limitations; OR corroboration: uses Docs 3, 4, and 5 together to build the manufacturing argument while qualifying with Doc 7 to show battlefield complexity."}]},
+    {title:"Complexity (0–1 point)",rows:[{pts:1,desc:"Complex understanding — e.g., reconciles tension within documents: Doc 7 (soldier lacking food, nearly freezing) seems to contradict 'Northern abundance' in Docs 3–5, reconciled by noting battlefield logistics were genuinely difficult while the structural advantage remained; OR argues supply/infrastructure were necessary but not sufficient — Confederate will (90% conscription rate per Doc 4) prolonged the war despite Northern material superiority; OR addresses that the Anaconda Plan was not fully successful (25% of Confederate supply lines held) while maintaining the overall argument holds."}]}
+  ]}
+}
+);
