@@ -755,6 +755,14 @@ function renderEssayScreen(p, type) {
     wrap.appendChild(sbox);
   }
 
+  // If SAQ/LEQ with no stimulus, show a brief note
+  if (!p.stimulus && !p.documents && (type === 'saq' || type === 'leq')) {
+    const noStim = el('div', '');
+    noStim.style.cssText = 'font-size:13px;color:var(--ink-light);font-style:italic;margin-bottom:16px;padding:10px 14px;background:var(--parchment-dark);border-left:3px solid var(--border)';
+    noStim.textContent = 'This question requires no primary source stimulus — respond using your knowledge of United States history.';
+    wrap.appendChild(noStim);
+  }
+
   // DBQ documents
   if (p.documents) {
     const docsDiv = el('div', 'essay-docs');
