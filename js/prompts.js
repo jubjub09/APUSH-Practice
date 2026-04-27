@@ -478,7 +478,10 @@ dbqPrompts.push(
     {
       label:"Document 2 — Map of Confederate territory losses, 1861–1865, Office of the Chief of Military History, United States Army",
       text:"A military history map showing the progression of Union control over Confederate territory from 1861 to 1865. Areas under Union control in 1861 are shown, with additional Confederate territories lost shaded by year: coastal areas fell first (Fort Monroe 1861, Port Royal Nov 1861, New Orleans Apr 1862), followed by interior territories progressing from north to south. The Mississippi River corridor fell by mid-1863 (Vicksburg). Sherman's March accounts for the large swath of Georgia territory taken in 1864. The map shows how the Anaconda Plan's dual strategy of coastal blockade and river control progressively dismembered Confederate territory.",
-      attr:"Office of the Chief of Military History, United States Army, 'The Civil War, 1861–1865'"
+      attr:"Office of the Chief of Military History, United States Army, 'The Civil War, 1861–1865'",
+      visual:true,
+      imageKey:"pt5_dbq_doc2_territory",
+      imageType:"historical map"
     },
     {
       label:"Document 3 — J.M. Edmunds, Commissioner General Land Office, 'Manufactures of the United States in 1860,' 1865",
@@ -488,7 +491,10 @@ dbqPrompts.push(
     {
       label:"Document 4 — Comparative resources: Union and Confederate states, 1861",
       text:"Union vs. Confederate resource comparison: Total population 2.5:1 Union; Male population 18–60 yrs 4.4:1 Union; Naval ship tonnage 25:1 Union; Factory production value 10:1 Union; Textile goods production 17:1 Union; Iron production 20:1 Union; Coal production 38:1 Union; Firearms production 32:1 Union; Railroad mileage 2.4:1 Union; Merchant ship tonnage 9:1 Union; Wealth produced 3:1 Union; Farm acreage 3:1 Union; Draft animals 1.8:1 Union; Livestock 1.5:1 Union; Wheat production 4.2:1 Union; Corn production 2:1 Union. Confederate advantage: Cotton production 1:24. By 1864, free men 18–60 in military service: Union 44%, Confederacy 90%.",
-      attr:"Comparison of available resources in the Union and the Confederate States in 1861"
+      attr:"Comparison of available resources in the Union and the Confederate States in 1861",
+      visual:true,
+      imageKey:"pt5_dbq_doc4_resources",
+      imageType:"comparative chart"
     },
     {
       label:"Document 5 — General William Tecumseh Sherman, comments to Professor David F. Boyd, December 24, 1860",

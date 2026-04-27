@@ -33,6 +33,8 @@ const IMAGE_REGISTRY = {
   // Princeton Review Practice Test 5 — FRQ stimuli
   "pt5_saq2_tammany":          "images/pt5_saq2_tammany.jpg",
   "pt5_dbq_doc1_anaconda":     "images/pt5_dbq_doc1_anaconda.jpg",
+  "pt5_dbq_doc2_territory":    "images/pt5_dbq_doc2_territory.jpg",
+  "pt5_dbq_doc4_resources":    "images/pt5_dbq_doc4_resources.jpg",
 };
 
 /**
